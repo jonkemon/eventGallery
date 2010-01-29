@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	layout="absolute"
+	xmlns:control="com.telecoms.media.eventGallery.control.*" 
+	creationComplete="onCreationComplete()">
+	<mx:Script>
+		<![CDATA[
+			import com.telecoms.media.eventGallery.control.*;
+			import com.telecoms.media.eventGallery.model.*;
+			
+			public var xmlData:XMLList = new XMLList;
+			public var xmlReceive:XMLreceive = new XMLreceive;
+			
+			// XML loading
+			private function onCreationComplete():void{
+				xmlLoader.send();
+			}
+		]]>
+	</mx:Script>
+	<mx:HTTPService id="xmlLoader" url="xml/photos.xml" resultFormat="e4x" contentType="application/xml" result="xmlReceive.xmlReturned(event)" fault="xmlReceive.xmlError(event)"/>
+</mx:Application>
